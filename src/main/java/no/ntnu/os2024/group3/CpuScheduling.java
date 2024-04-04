@@ -63,7 +63,7 @@ public class CpuScheduling {
 			processes[i] = Process.generateRandomProcess(String.valueOf(i));
 		}
 
-		fcfs(processes);
+		fcfs(Arrays.copyOf(processes, processes.length));
 		preemptivePriority(processes);
 	}
 }
