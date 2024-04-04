@@ -90,7 +90,6 @@ public class CpuScheduling {
         return;
     }
 
-    // not done yet
     fcfs(Arrays.copyOf(processes, processes.length));
 
     // not done yet
