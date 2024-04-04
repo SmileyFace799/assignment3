@@ -1,6 +1,10 @@
 package no.ntnu.os2024.group3;
 
+import java.util.Random;
+
 public class Process {
+    private static final Random RANDOM = new Random();
+
     private final String processID;
     private final int arrivalTime;
     private final int burstTime;
@@ -17,6 +21,15 @@ public class Process {
         this.waitingTime = 0;
         this.completionTime = 0;
         this.turnaroundTime = 0;
+    }
+
+    public static Process generateRandomProcess(String processID) {
+        return new Process(
+                processID,
+                RANDOM.nextInt(0, 127),
+                RANDOM.nextInt(0, 127),
+                RANDOM.nextInt()
+        );
     }
 
     public String getProcessID() {

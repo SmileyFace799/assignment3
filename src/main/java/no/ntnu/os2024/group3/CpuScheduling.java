@@ -57,12 +57,11 @@ public class CpuScheduling {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
-    Process[] fcfsProcesses = {
-      new Process("P1", 0, 5, -1),
-      new Process("P2", 1, 3, -1),
-      new Process("P3", 2, 8, -1),
-      new Process("P4", 3, 6, -1),
-    };
+    int numberOfProcesses = 10;
+    Process[] fcfsProcesses = new Process[numberOfProcesses];
+    for (int i = 0; i < numberOfProcesses; i++) {
+      fcfsProcesses[i] = Process.generateRandomProcess(String.valueOf(i));
+    }
 
     fcfs(fcfsProcesses);
   }
