@@ -27,7 +27,7 @@ public class Process {
         return new Process(
                 processID,
                 RANDOM.nextInt(0, 127),
-                RANDOM.nextInt(0, 127),
+                RANDOM.nextInt(1, 127),
                 RANDOM.nextInt()
         );
     }
