@@ -2,7 +2,6 @@ package no.ntnu.os2024.group3;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Scanner;
 
 public class CpuScheduling {
 
@@ -51,7 +50,7 @@ public class CpuScheduling {
 		);
 	}
 
-	public static void PreemptivePriority(Process[] processes) {
+	public static void preemptivePriority(Process[] processes) {
 		System.out.println(
 				"Preemptive Priority Scheduling is not implemented yet."
 		);
@@ -59,11 +58,12 @@ public class CpuScheduling {
 
 	public static void main(String[] args) {
 		int numberOfProcesses = 10;
-		Process[] fcfsProcesses = new Process[numberOfProcesses];
+		Process[] processes = new Process[numberOfProcesses];
 		for (int i = 0; i < numberOfProcesses; i++) {
-			fcfsProcesses[i] = Process.generateRandomProcess(String.valueOf(i));
+			processes[i] = Process.generateRandomProcess(String.valueOf(i));
 		}
 
-		fcfs(fcfsProcesses);
+		fcfs(processes);
+		preemptivePriority(processes);
 	}
 }
