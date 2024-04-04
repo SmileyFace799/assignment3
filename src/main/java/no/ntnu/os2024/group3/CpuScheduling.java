@@ -100,7 +100,7 @@ public class CpuScheduling {
 		}
 		return new double[]{
 				totalWaitingTime.doubleValue() / processesArray.length,
-				totalWaitingTime.doubleValue() / processesArray.length
+				totalTurnaroundTime.doubleValue() / processesArray.length
 		};
 	}
 
@@ -137,17 +137,21 @@ public class CpuScheduling {
 			return;
 		}
 		scanner.close();
-
-		for (double[] values : new double[][]{
-				fcfs(Arrays.copyOf(processes, processes.length)),
-				preemptivePriority(processes)
-		}) {
-			System.out.println(
-					"Average Waiting Time: " + values[0]
-			);
-			System.out.println(
-					"Average Turnaround Time: " + values[1]
-			);
-		}
+		double[] valuesFcfs = fcfs(Arrays.copyOf(processes, processes.length));
+		double[] valuesPp = preemptivePriority(processes);
+		System.out.println("First come first served (FCFS) scheduling:");
+		System.out.println(
+				"Average Waiting Time: " + valuesFcfs[0]
+		);
+		System.out.println(
+				"Average Turnaround Time: " + valuesFcfs[1]
+		);
+		System.out.println("Preemptive Priority scheduling:");
+		System.out.println(
+				"Average Waiting Time: " + valuesPp[0]
+		);
+		System.out.println(
+				"Average Turnaround Time: " + valuesPp[1]
+		);
 	}
 }
