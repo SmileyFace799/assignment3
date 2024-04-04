@@ -23,10 +23,10 @@ public class Process {
         this.turnaroundTime = 0;
     }
 
-    public static Process generateRandomProcess(String processID) {
+    public static Process generateRandomProcess(String processID, int spread) {
         return new Process(
                 processID,
-                RANDOM.nextInt(0, 512),
+                RANDOM.nextInt(0, (int) (64.5 * spread)),
                 RANDOM.nextInt(1, 128),
                 RANDOM.nextInt(-128, 128)
         );

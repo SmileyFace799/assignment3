@@ -2,7 +2,6 @@ package no.ntnu.os2024.group3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.Scanner;
 import java.util.List;
@@ -45,7 +44,8 @@ public class CpuScheduling {
 		}
 		return new double[]{
 				(double) totalWaitingTime / processes.length,
-				(double) totalTurnaroundTime / processes.length};
+				(double) totalTurnaroundTime / processes.length
+		};
 	}
 
 	public static double[] preemptivePriority(Process[] processesArray) {
@@ -68,7 +68,6 @@ public class CpuScheduling {
 						.sorted(Comparator.comparingInt(Process::getArrivalTime))
 						.min(Comparator.comparingInt(Process::getPriority))
 						.ifPresent(next -> {
-							System.out.println(currentTime.get());
 							next.setWaitingTime(currentTime.get() - next.getArrivalTime());
 							next.setCompletionTime(currentTime.get() + next.getBurstTime());
 							next.setTurnaroundTime(next.getCompletionTime() - next.getArrivalTime());
@@ -99,10 +98,6 @@ public class CpuScheduling {
 					+ process.getPriority()
 			);
 		}
-		System.out.println(Arrays.toString(new double[]{
-				totalWaitingTime.get(),
-				totalWaitingTime.get()
-		}));
 		return new double[]{
 				totalWaitingTime.doubleValue() / processesArray.length,
 				totalWaitingTime.doubleValue() / processesArray.length
@@ -134,7 +129,7 @@ public class CpuScheduling {
 		} else if ("random".equals(userInput)) {
 			System.out.println("Generating random processes:");
 			for (int i = 0; i < numberOfProcesses; i++) {
-				processes[i] = Process.generateRandomProcess(String.valueOf(i + 1));
+				processes[i] = Process.generateRandomProcess(String.valueOf(i + 1), numberOfProcesses);
 			}
 		} else {
 			System.out.println("Invalid input. Exiting program.");
