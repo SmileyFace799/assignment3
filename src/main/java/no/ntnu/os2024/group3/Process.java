@@ -26,9 +26,9 @@ public class Process {
     public static Process generateRandomProcess(String processID) {
         return new Process(
                 processID,
-                RANDOM.nextInt(0, 127),
-                RANDOM.nextInt(1, 127),
-                RANDOM.nextInt()
+                RANDOM.nextInt(0, 512),
+                RANDOM.nextInt(1, 128),
+                RANDOM.nextInt(-128, 128)
         );
     }
 
