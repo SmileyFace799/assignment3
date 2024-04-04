@@ -4,37 +4,37 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class CPU_Scheduling {
+public class CpuScheduling {
 
-  public static void FCFS(Process[] processes) {
-    Arrays.sort(processes, Comparator.comparingInt(p -> p.arrivalTime));
+  public static void fcfs(Process[] processes) {
+    Arrays.sort(processes, Comparator.comparingInt(Process::getArrivalTime));
     int currentTime = 0;
     int totalWaitingTime = 0;
     int totalTurnaroundTime = 0;
 
     for (Process process : processes) {
-      if (currentTime < process.arrivalTime) {
-        currentTime = process.arrivalTime;
+      if (currentTime < process.getArrivalTime()) {
+        currentTime = process.getArrivalTime();
       }
-      process.waitingTime = currentTime - process.arrivalTime;
-      process.completionTime = currentTime + process.burstTime;
-      process.turnaroundTime = process.completionTime - process.arrivalTime;
+      process.setWaitingTime(currentTime - process.getArrivalTime());
+      process.setCompletionTime(currentTime + process.getBurstTime());
+      process.setTurnaroundTime(process.getCompletionTime() - process.getArrivalTime());
 
-      currentTime += process.burstTime;
+      currentTime += process.getBurstTime();
 
-      totalWaitingTime += process.waitingTime;
-      totalTurnaroundTime += process.turnaroundTime;
+      totalWaitingTime += process.getWaitingTime();
+      totalTurnaroundTime += process.getTurnaroundTime();
     }
 
     System.out.println("First Come First Serve (FCFS) Scheduling:");
     for (Process process : processes) {
       System.out.println(
         "Process ID: " +
-        process.processID +
+        process.getProcessID() +
         ", Waiting Time: " +
-        process.waitingTime +
+        process.getWaitingTime() +
         ", Turnaround Time: " +
-        process.turnaroundTime
+        process.getTurnaroundTime()
       );
     }
 
@@ -64,6 +64,6 @@ public class CPU_Scheduling {
       new Process("P4", 3, 6, -1),
     };
 
-    FCFS(fcfsProcesses);
+    fcfs(fcfsProcesses);
   }
 }

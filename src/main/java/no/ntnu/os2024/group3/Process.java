@@ -1,22 +1,61 @@
 package no.ntnu.os2024.group3;
 
-class Process {
+public class Process {
+    private final String processID;
+    private final int arrivalTime;
+    private final int burstTime;
+    private final int priority;
+    private int waitingTime;
+    private int completionTime;
+    private int turnaroundTime;
 
-    String processID;
-    int arrivalTime;
-    int burstTime;
-    int priority;
-    int waitingTime;
-    int completionTime;
-    int turnaroundTime;
-  
-    public Process(String pid, int arrTime, int burst, int prio) {
-      processID = pid;
-      arrivalTime = arrTime;
-      burstTime = burst;
-      priority = prio;
-      waitingTime = 0;
-      completionTime = 0;
-      turnaroundTime = 0;
+    public Process(String processID, int arrivalTime, int burstTime, int priority) {
+        this.processID = processID;
+        this.arrivalTime = arrivalTime;
+        this.burstTime = burstTime;
+        this.priority = priority;
+        this.waitingTime = 0;
+        this.completionTime = 0;
+        this.turnaroundTime = 0;
     }
-  }
+
+    public String getProcessID() {
+        return processID;
+    }
+
+    public int getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public int getBurstTime() {
+        return burstTime;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public int getWaitingTime() {
+        return waitingTime;
+    }
+
+    public int getCompletionTime() {
+        return completionTime;
+    }
+
+    public int getTurnaroundTime() {
+        return turnaroundTime;
+    }
+
+    public void setWaitingTime(int waitingTime) {
+        this.waitingTime = waitingTime;
+    }
+
+    public void setCompletionTime(int completionTime) {
+        this.completionTime = completionTime;
+    }
+
+    public void setTurnaroundTime(int turnaroundTime) {
+        this.turnaroundTime = turnaroundTime;
+    }
+}
